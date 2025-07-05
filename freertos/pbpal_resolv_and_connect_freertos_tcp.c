@@ -21,7 +21,6 @@ enum pbpal_resolv_n_connect_result pbpal_resolv_and_connect(pubnub_t *pb)
 
 #if ESP_PLATFORM
     struct sockaddr_in addr;
-
     addr.sin_port = htons(HTTP_PORT);
 
     PUBNUB_LOG_TRACE("pbpal_resolv_and_connect: gethostbyname(%s)\n",
@@ -51,7 +50,6 @@ enum pbpal_resolv_n_connect_result pbpal_resolv_and_connect(pubnub_t *pb)
     }
 #else
     struct sockaddr addr;
-
     addr.sin_port = htons(HTTP_PORT);
     addr.sin_addr = gethostbyname(PUBNUB_ORIGIN_SETTABLE ? pb->origin : PUBNUB_ORIGIN);
     if (addr.sin_addr == 0) {
